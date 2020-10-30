@@ -3,14 +3,8 @@ import './Button.css';
 
 const Button = (props) => {
 
-    const styles={
-        backgroundColor:props.bgc,
-
-        color:props.color,
-        }
-
     return (
-    <button className="colorButton" style={styles}>  {props.label}</button>
+    <button className="colorButton" style={props.styles}>  {props.label}</button>
     )
 }
 

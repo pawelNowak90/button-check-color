@@ -6,27 +6,20 @@ import Button from './Button.js';
 class App extends Component {
 
   state = {
-    backgroundColor:'#999',
-    color:'red',
-
-  //   buttonColors: {
-  //     backgroundColor:'orange',
-  //     color:'red',
-  // }
+    styles:
+    {backgroundColor:'#999',
+    color:'blue'},
  }
 
-//trzymanie wszystkich wlasciwosci CSS w obiekcie i jak w setState aktualizować obiekt oraz jak zrobić to na HOOKACH
+//aktualizować obiekt ? oraz jak zrobić to na HOOKACH
 //dalszy rozwój apki
 
   changeColor = (e) => {
-    if (e.target.name==="fontColor"){
-    this.setState({
-      color:e.target.value,
-    })} else if (e.target.name ==="bgcColor"){
-      this.setState({
-        backgroundColor:e.target.value,
-      })
-    }
+    let styles={...this.state.styles}
+    // let item={...styles.backgroundColor}
+    // item.backgroundColor=e.target.value;
+      styles.[e.target.name]=e.target.value;
+      this.setState({styles})
 
   }
 
@@ -38,24 +31,24 @@ class App extends Component {
 
   render() {
     //destrukturyzacja metod/tablic ? -const {nazwaTablicy} = skąd?
-    const {color, backgroundColor} = this.state
+    const {color, backgroundColor, styles} = this.state
     return (
     <div className="App">
       <h3>Tydzień nr 3 - architektura aplikacji - 01 BUTTON</h3>
-      <Button color={color} bgc={backgroundColor} label={'Kliknij i wybierz twój ulubiony zestaw kolorów'}/>
+      <Button styles={styles} color={color} bgc={backgroundColor} label={'Kliknij i wybierz twój ulubiony zestaw kolorów'}/>
       <br />
 
-      <label htmlFor="fontColor">Wybierz kolor czcionki </label>
+      <label htmlFor="color">Wybierz kolor czcionki </label>
 
-      <select onChange={this.changeColor} name="fontColor" id="">
+      <select onChange={this.changeColor} name="color" id="">
         <option value={this.colors.turquoise}>Turkusowy </option>
         <option value={this.colors.emerald}>emerald </option>
         <option value={this.colors.peter_river}>peter_river </option>
       </select>
 
-      <label htmlFor="bgcColor">Wybierz kolor tła </label>
+      <label htmlFor="backgroundColor">Wybierz kolor tła </label>
 
-      <select onChange={this.changeColor} name="bgcColor" id="">
+      <select onChange={this.changeColor} name="backgroundColor" id="">
         <option value={this.colors.turquoise}>Turkusowy </option>
         <option value={this.colors.emerald}>emerald </option>
         <option value={this.colors.peter_river}>peter_river </option>
