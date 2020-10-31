@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import './App.css';
 import Button from './Button.js';
 import Select from './Select.js';
+import HideDiv from './HideDiv.js';
+
 
 
 class App extends Component {
@@ -31,21 +33,15 @@ class App extends Component {
   {name:'waterfall',      hex:'#38ada9'}
 ];
 
-//aktualizować obiekt ? oraz jak zrobić to na HOOKACH
-//dalszy rozwój apki
 
   changeColor = (e) => {
     let styles={...this.state.styles}
-    // let item={...styles.backgroundColor}
-    // item.backgroundColor=e.target.value;
       styles.[e.target.name]=e.target.value;
       this.setState({styles})
-
   }
 
   render() {
-    //destrukturyzacja metod/tablic ? -const {nazwaTablicy} = skąd?
-    const {color, backgroundColor, styles} = this.state
+  const {color, backgroundColor, styles} = this.state
     return (
     <div className="App">
       <h3>Tydzień nr 3 - architektura aplikacji - 01 BUTTON</h3>
@@ -54,6 +50,7 @@ class App extends Component {
 
       <Select change={this.changeColor} name={'color'} content={'Wybierz kolor czcionki '} pallete={this.colorsFr3}/>
       <Select change={this.changeColor} name={'backgroundColor'} content={'Wybierz kolor tla '} pallete={this.colorsFr2}/>
+      <HideDiv/>
 
     </div>
   )
