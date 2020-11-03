@@ -1,30 +1,32 @@
 import React from 'react';
 import './HideDiv.css'
-
-// const styles = {fontSize:'40px'};
+import {Input, Textarea, Button} from './Form';
 
 class HideDiv extends React.Component {
 
     state = {
         styles:
         {display:'none'},
-     }
+    color:'black',
+    bgColor:'gray',
+    }
 
     showDivHandler = () => {
-    // let square = document.querySelector('div#square');
-    // square.style.display="block";
-
     this.setState({
         styles:{display:'block'}
     })
 }
 
     render() {
+
         return (
             <>
-            <button onClick={this.showDivHandler}>Pokaz diva</button>
-            <div id="square" style={this.state.styles} className="image">to jest komponent HideDiv</div>
-        </>
+                <button className="hideButton" onClick={this.showDivHandler}>Kliknij aby pokazać rozwiązanie: <strong>Input</strong> oraz <strong>Textarea</strong> </button>
+                <div id="square" style={this.state.styles} className="task-3">
+                    <Input color={this.props.color} bgColor={this.props.bgColor}/>
+                    <Textarea color={this.props.color} bgColor={this.props.bgColor}/>
+                </div>
+            </>
 
          );
     }

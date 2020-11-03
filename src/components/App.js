@@ -1,31 +1,13 @@
-import React, {Component} from 'react';
+import React, { useState } from 'react';
+
 import './App.css';
-import Button from './Button.js';
-import Select from './Select.js';
-import HideDiv from './HideDiv.js';
+import Button from './Form/Button.js';
+import Select from './Form/Select.js';
+import HideDiv from './HideDiv';
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 
-
-class App extends Component {
-
-  state = {
-    styles:
-    {backgroundColor:'#f6b93b',
-    color:'#4a69bd'},
- }
-
- colorsFr2=[
-  {name:'squash_bloosom',hex:'#f6b93b'},
-  {name:'mandarin_red',
-   hex:'#e55039'},
-  {name:'azraq_blue',
-   hex:'#4a69bd'},
-  {name:'dupain',
-   hex:'#60a3bc'},
-  {name:'aurora_green',
-   hex:'#78e08f'}
-];
- colorsFr3=[
+const colorsFr3=[
   {name:'iceland_poppy',hex:'#fa983a'},
   {name:'tomato_red',   hex:'#eb2f06'},
   {name:'yue_guang_lan_blue',   hex:'#1e3799'},
@@ -33,27 +15,36 @@ class App extends Component {
   {name:'waterfall',      hex:'#38ada9'}
 ];
 
+const colorsFr2=[
+    {name:'squash_bloosom',hex:'#f6b93b'},
+    {name:'mandarin_red',
+     hex:'#e55039'},
+    {name:'azraq_blue',
+     hex:'#4a69bd'},
+    {name:'dupain',
+     hex:'#60a3bc'},
+    {name:'aurora_green',
+     hex:'#78e08f'}
+  ];
 
-  changeColor = (e) => {
-    let styles={...this.state.styles}
-      styles.[e.target.name]=e.target.value;
-      this.setState({styles})
-  }
+const App = () => {
+  const [color, setColor]=useState('black');
+  const [bgColor, setBgColor]=useState('gray');
+  return (
 
-  render() {
-  const {color, backgroundColor, styles} = this.state
-    return (
-    <div className="App">
-      <h3>Tydzień nr 3 - architektura aplikacji - 01 BUTTON</h3>
-      <Button styles={styles} color={color} bgc={backgroundColor} label={'Kliknij i wybierz twój ulubiony kolor z palety FRANCE'}/>
-      <br />{/*  //I must zastąpić to */}
+    <div className="wrapper">
 
-      <Select change={this.changeColor} name={'color'} content={'Wybierz kolor czcionki '} pallete={this.colorsFr3}/>
-      <Select change={this.changeColor} name={'backgroundColor'} content={'Wybierz kolor tla '} pallete={this.colorsFr2}/>
-      <HideDiv/>
+      <h3>Szkoła reacta - Tydzień nr 3 - rozwiązanie zadania 2 i 3:</h3>
+      <Button color={color} bgColor={bgColor} icon={faUser} label={'Wybierz twój ulubiony zestaw kolorów'}/>
+      <Select change={(e)=>{setColor(e.target.value)}} name={'color'} content={'Kolor czcionki '} pallete={colorsFr3}/>
+      <Select change={(e)=>{setBgColor(e.target.value)}} name={'backgroundColor'} content={'Kolor tla '} pallete={colorsFr2}/>
 
-    </div>
-  )
+      <h3>Szkoła reacta - Tydzień nr 3 - rozwiązanie zadania 1:</h3>
+      <HideDiv color={color} bgColor={bgColor}/>
+
+      </div>
+
+    );
 }
-}
+
 export default App;

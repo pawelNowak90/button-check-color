@@ -1,4 +1,23 @@
-.App {
-  text-align: center;
+div.wrapper{
+  margin:30px;
+  width:50%;
+  text-align:center;
+  display:flex;
+  flex-direction: column;
+  border:solid orangered 3px;
+  border-radius:3px;
+  padding:10px;
+}
+h3{
+  margin-top:1.5em;
+  color:orangered;
+  font-size: 1.25em;
 }
 
+label{
+  font-size: 1.25em;
+}
+select{
+  font-size: 1.25em;
+
+}
