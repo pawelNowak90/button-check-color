@@ -12,14 +12,14 @@ const Button = (props) => {
     }
 
     return (
-    <>
+    <React.Fragment>
         <button className="colorButton"
             style={styles}
             >
                 <FontAwesomeIcon icon={props.icon}/>
                 {props.label}
         </button>
-    </>
+    </React.Fragment>
     )
 }
 
